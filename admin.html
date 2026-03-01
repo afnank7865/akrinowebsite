@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - AKRINO Scedio</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <h2>Admin Panel</h2>
+            <nav>
+                <a href="#dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#notifications"><i class="fas fa-bell"></i> Notifications</a>
+                <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <header>
+                <h1>Notification Management</h1>
+                <button id="newNotificationBtn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> New Notification
+                </button>
+            </header>
+
+            <div class="notification-form" id="notificationForm" style="display: none;">
+                <h3>Create New Notification</h3>
+                <form id="createNotificationForm">
+                    <div class="form-group">
+                        <label for="notificationTitle">Title</label>
+                        <input type="text" id="notificationTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="notificationMessage">Message</label>
+                        <textarea id="notificationMessage" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="isImportant">
+                            Mark as important
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Notification</button>
+                    <button type="button" id="cancelNotification" class="btn btn-secondary">Cancel</button>
+                </form>
+            </div>
+
+            <div class="notifications-list" id="notificationsList">
+                <!-- Notifications will be loaded here -->
+            </div>
+        </main>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>

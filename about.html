@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AKRINO Scedio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* About Page Specific Styles */
+        .about-hero {
+            background: url('img/about.jpeg') center/cover no-repeat;
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.72));
+            z-index: 1;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            color: #ffffff !important;
+            text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            color: rgba(255,255,255,0.95) !important;
+            text-shadow: 0 4px 14px rgba(0,0,0,0.45);
+        }
+
+        .about-section {
+            padding: 80px 0;
+            background-color: #f9fbfe;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-title .title-divider {
+            width: 80px;
+            height: 4px;
+            background: #b48cff;
+            margin: 0 auto;
+            border: none;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 30px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .about-text h3 {
+            text-align: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 100%;
+            padding: 0 30px;
+            text-align: left;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        /* Ensure notification icon does not appear on About page */
+        .notification-bell,
+        .notification-count,
+        #notificationBell {
+            display: none !important;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #b48cff, #6a5acd);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                padding: 0 15px 30px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-container">
+            <h1 data-aos="fade-up" data-aos-delay="100">About AKRINO Scedio</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Transforming ideas into stunning visual experiences through innovative design and creative solutions.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Story</h2>
+                <div class="title-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text" style="flex: 1 100%;" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="fade-in-up delay-100">From Humble Beginnings to Creative Excellence</h3>
+                    <p class="fade-in-up delay-200">Founded in 2020, AKRINO Scedio began as a small team of passionate designers with a shared vision to create meaningful and impactful designs. What started as a modest design studio has now grown into a full-service creative agency serving clients worldwide.</p>
+                    <p class="fade-in-up delay-300">Our journey has been marked by dedication, innovation, and an unwavering commitment to excellence. We've had the privilege of working with startups, established businesses, and everything in between, helping them bring their visions to life through exceptional design.</p>
+                    <p class="fade-in-up delay-400">Today, we continue to push the boundaries of creativity, constantly evolving our skills and embracing new technologies to deliver cutting-edge design solutions that make a real difference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="about-section" style="background-color: #fff;">
+        <div class="about-container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Mission &amp; Vision</h2>
+                <div class="title-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text" style="flex: 1 100%;">
+                    <p>At AKRINO Scedio, our mission is to empower businesses through innovative design solutions that drive growth and create lasting impressions. We believe that great design is not just about aesthetics, but about solving problems and creating meaningful connections.</p>
+                    <p>Our vision is to be recognized as a global leader in design and creativity, known for our commitment to excellence, innovation, and client satisfaction. We strive to push the boundaries of what's possible, constantly exploring new ideas and techniques to deliver exceptional results.</p>
+                    <p>We're not just designers; we're storytellers, problem-solvers, and visionaries who are passionate about making a difference through our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Animation -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <span class="stat-number animate-pulse">150+</span>
+                <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <span class="stat-number animate-pulse">98%</span>
+                <span class="stat-label">Client Satisfaction</span>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <span class="stat-number animate-pulse">50+</span>
+                <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <span class="stat-number animate-pulse">10+</span>
+                <span class="stat-label">Awards Won</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Call to Action -->
+    <section class="about-section" style="background-color: #f9fbfe; text-align: center; padding: 80px 0;">
+        <div class="about-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #2c3e50;">Ready to Start Your Project?</h2>
+            <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto 30px;">Let's work together to bring your ideas to life with our expert design services.</p>
+            <a href="get-quote.php" class="btn" style="display: inline-block; background: #4a90e2; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #2c3e50; color: #fff; padding: 60px 0 20px;">
+        <div class="about-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="flex: 1; min-width: 250px; margin-bottom: 30px;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 20px;">AKRINO Scedio</h3>
+                <p style="color: #bbb; line-height: 1.6; margin-bottom: 20px;">Transforming ideas into stunning visual experiences through innovative design and creative solutions.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/akrinoscedio?igsh=MW50bTVucTNodDh2Mw==" id="aboutSocialInstagram" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.2rem; margin-right: 15px;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/afnan-khan-developer?utm_source=share_via&utm_content=profile&utm_medium=member_android" id="aboutSocialLinkedin" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.2rem;" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 30px; padding: 0 20px;">
+                <h4 style="font-size: 1.2rem; margin-bottom: 20px; position: relative; padding-bottom: 10px;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><a href="index.html" style="color: #bbb; text-decoration: none; transition: color 0.3s ease;">Home</a></li>
+                    <li style="margin-bottom: 10px;"><a href="index.html#services" style="color: #bbb; text-decoration: none; transition: color 0.3s ease;">Services</a></li>
+                    <li style="margin-bottom: 10px;"><a href="index.html#portfolio" style="color: #bbb; text-decoration: none; transition: color 0.3s ease;">Portfolio</a></li>
+                    <li style="margin-bottom: 10px;"><a href="about.php" style="color: #4a90e2; text-decoration: none; transition: color 0.3s ease; font-weight: 500;">About Us</a></li>
+                    <li style="margin-bottom: 10px;"><a href="get-quote.php" style="color: #bbb; text-decoration: none; transition: color 0.3s ease;">Contact</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin-bottom: 30px;">
+                <h4 style="font-size: 1.2rem; margin-bottom: 20px; position: relative; padding-bottom: 10px;">Contact Us</h4>
+                <ul style="list-style: none; padding: 0; color: #bbb;">
+                    <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                        <i class="fas fa-map-marker-alt" style="position: absolute; left: 0; top: 5px; color: #4a90e2;"></i>
+                         <span id="aboutContactLocation">Nashik, Maharashtra, India</span>
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                        <i class="fas fa-phone" style="position: absolute; left: 0; top: 5px; color: #4a90e2;"></i>
+                        <span id="aboutContactPhone">+91 99709 63077</span>
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                        <i class="fas fa-envelope" style="position: absolute; left: 0; top: 5px; color: #4a90e2;"></i>
+                        <span id="aboutContactEmail">akrinoscedio@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <p style="color: #888; font-size: 0.9rem;">&copy; 2025 AKRINO Scedio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+    </script>
+    <script src="js/shared.js?v=20260224b"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

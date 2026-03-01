@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Design</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portfolio-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .wd-grid {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .wd-item {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 18px;
+            align-items: center;
+        }
+        .wd-item:nth-child(even) > .wd-card:first-child {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .wd-item:nth-child(even) > .wd-card:last-child {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .wd-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: transform 260ms ease, box-shadow 260ms ease;
+        }
+        .wd-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 38px var(--card-shadow);
+        }
+        .wd-desc {
+            color: var(--text-color);
+        }
+        .wd-desc h3 {
+            margin: 0 0 10px;
+        }
+        .wd-desc p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .wd-desc h3,
+        .wd-desc p {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .wd-visible .wd-desc h3 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 140ms;
+        }
+        .wd-visible .wd-desc p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 240ms;
+        }
+        .wd-img {
+            width: 100%;
+            height: 320px;
+            display: block;
+            border-radius: 12px;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 420ms ease;
+        }
+        .wd-card:hover .wd-img {
+            transform: scale(1.03);
+        }
+        .wd-animate {
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            transition: opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .wd-item.wd-animate:nth-child(odd) {
+            transform: translateX(-18px) translateY(16px) scale(0.98);
+        }
+        .wd-item.wd-animate:nth-child(even) {
+            transform: translateX(18px) translateY(16px) scale(0.98);
+        }
+        .wd-animate.wd-visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0) scale(1);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .wd-card,
+            .wd-img,
+            .wd-animate {
+                transition: none;
+            }
+            .wd-desc h3,
+            .wd-desc p {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+            .wd-animate {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        @media (max-width: 500px) {
+            .wd-grid {
+                gap: 14px;
+            }
+            .wd-item {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                gap: 12px;
+            }
+            .wd-img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<main style="padding: 90px 20px 60px; max-width: 1200px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <h1 style="margin: 0;">Application Design</h1>
+        <a class="btn" href="index.html#portfolio" style="text-decoration: none;">Back to Portfolio</a>
+    </div>
+
+    <div class="wd-grid" style="margin-top: 25px;">
+        <div class="wd-item wd-animate">
+            <div class="wd-card">
+                <img class="wd-img" src="../img/ap1.jpeg" alt="Application Design">
+            </div>
+            <div class="wd-card wd-desc">
+                <h3>Application Design: From Idea to Interface</h3>
+                <p style="font-family: 'Times New Roman', Times, serif;"><b>This visual represents the transformation of a basic wireframe into a polished mobile application interface.<br> It highlights the design process, showing how initial ideas are carefully refined into a clean, functional, and user-friendly digital experience.</b></p>
+            </div>
+        </div>
+
+        <div class="wd-item wd-animate">
+            <div class="wd-card">
+                <img class="wd-img" src="../img/ap2.jpeg" alt="Application Design">
+            </div>
+            <div class="wd-card wd-desc">
+                <h3>Social Media Design Journey</h3>
+                <p style="font-family: 'Times New Roman', Times, serif;"><b>This design showcases the evolution of a social media post from an initial concept sketch to a visually engaging final graphic.<br> It emphasizes creativity, content structure, and visual storytelling aimed at capturing attention and driving audience engagement.</b></p>
+            </div>
+        </div>
+
+        <div class="wd-item wd-animate">
+            <div class="wd-card">
+                <img class="wd-img" src="../img/ap3.jpeg" alt="Application Design">
+            </div>
+            <div class="wd-card wd-desc">
+                <h3> Mobile Application Development Journey</h3>
+                <p style="font-family: 'Times New Roman', Times, serif;"><b>This artwork illustrates the journey from a rough concept sketch to a fully usable mobile interface.<br> It reflects a thoughtful UX/UI process focused on clarity, usability, and modern design aesthetics to deliver a seamless user experience.</b></p>
+            </div>
+        </div>
+
+        <div class="wd-item wd-animate">
+            <div class="wd-card">
+                <img class="wd-img" src="../img/ap4.jpeg" alt="Application Design">
+            </div>
+            <div class="wd-card wd-desc">
+                <h3>Application Design Journey (UX &amp; UI)</h3>
+                <p style="font-family: 'Times New Roman', Times, serif;"><b>This design highlights the transition from an early sketch to a refined web and app mockup.<br> It demonstrates a strong balance between user experience and interface design, ensuring functionality, visual consistency, and an intuitive final product.</b></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.wd-animate');
+        if (!('IntersectionObserver' in window)) {
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].classList.add('wd-visible');
+            }
+            return;
+        }
+        const observer = new IntersectionObserver(function(entries) {
+            for (let i = 0; i < entries.length; i++) {
+                const entry = entries[i];
+                if (!entry.isIntersecting) continue;
+                const el = entry.target;
+                el.style.transitionDelay = el.dataset.wdDelay || '0ms';
+                el.classList.add('wd-visible');
+                observer.unobserve(el);
+            }
+        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+        for (let i = 0; i < cards.length; i++) {
+            const el = cards[i];
+            el.dataset.wdDelay = (80 + (i * 110)) + 'ms';
+            observer.observe(el);
+        }
+    });
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKRINO Scedio - Creative Design Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<style>
+    /* Reset and Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Main Content */
+    main {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: 80px 20px;
+        background-color: var(--bg-color);
+    }
+
+    .testimonials h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: var(--text-color);
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    .testimonial-card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .testimonial-rating {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        color: #FFD700;
+        font-size: 18px;
+    }
+
+    .testimonial-rating .date {
+        color: var(--text-muted);
+        font-size: 14px;
+    }
+
+    .testimonial-title {
+        margin: 10px 0;
+        font-size: 18px;
+        color: var(--text-color);
+    }
+
+    .testimonial-text {
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        color: var(--text-muted);
+        font-size: 14px;
+    }
+
+    .testimonial-author i {
+        margin-right: 8px;
+        color: var(--text-muted);
+        font-size: 16px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-logo-container {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .hero-logo-container img:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+</style>
+
+<header>
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">AKRINO Scedio</a></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="portfolio.php">Portfolio</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="get-quote.php">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="hamburger nav-icon" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle nav-icon" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="home" class="hero" style="position: relative; padding-top: 100px; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div class="hero-bg" aria-hidden="true">
+            <div class="hero-bg-slide"></div>
+            <div class="hero-bg-slide"></div>
+            <div class="hero-bg-slide"></div>
+            <div class="hero-bg-slide"></div>
+            <div class="hero-bg-overlay"></div>
+        </div>
+        <div class="hero-container" style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 2rem; text-align: center;">
+            <div class="hero-logo-container" style="margin: 0 auto 40px; max-width: 200px;">
+                <img id="homeProfileImage" src="uploads/my img.jpg" 
+                     alt="AKRINO Scedio" 
+                     style="width: 100%; height: auto; border-radius: 50%; border: 5px solid var(--bg-color); box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            </div>
+            
+            <div class="hero-content" style="max-width: 800px; margin: 0 auto;">
+                <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--text-color); line-height: 1.2;">
+                    Transform Your Vision into Stunning Designs
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--text-muted); margin: 0 auto 2.5rem; line-height: 1.6; max-width: 700px;">
+                    We create beautiful, functional designs that help businesses stand out in the digital world. 
+                    Our team of experts delivers exceptional results tailored to your unique needs.
+                </p>
+                
+                <div class="hero-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem;">
+                    <a href="portfolio.php" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1.1rem; border-radius: 50px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; background: #b48cff; color: white; border: 2px solid #b48cff;">
+                        View Our Work
+                    </a>
+                    <a id="contactBtn" href="get-quote.php" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1.1rem; border-radius: 50px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; background: #b48cff; color: white; border: 2px solid #b48cff;">
+                        Get a Quote
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services" style="padding: 100px 20px; background-color: var(--bg-color);">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                <h2 id="publicServicesTitle" style="font-size: 2.5rem; color: var(--text-color); margin-bottom: 15px;">Our Services</h2>
+                <p id="publicServicesSubtitle" style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+                    We offer comprehensive design solutions tailored to your business needs
+                </p>
+            </div>
+            
+            <div id="publicServicesGrid" class="services-grid">
+                <div class="service-card">
+                    <div class="icon-container">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>From eye-catching logos to stunning brochures and business cards, we create visual content that captures attention and communicates your brand's message effectively.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-container">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Branding</h3>
+                    <p>Build a powerful brand identity that resonates with your audience. We create complete brand identity packages including logos, color schemes, and brand guidelines.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-container">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Create stunning, responsive websites that engage visitors and drive conversions. Our designs combine beautiful aesthetics with seamless functionality.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-container">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Application Design</h3>
+                    <p>We design modern, user-friendly mobile and web applications with clean layouts, clear flows, and engaging interfaces that improve usability and retention.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-container">
+                        <i class="fas fa-bezier-curve"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>From wireframes to polished UI systems, we craft intuitive user experiences and visually consistent interfaces that align with your brand and business goals.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-container">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Custom Solutions</h3>
+                    <p>Every business is unique. We offer tailored design services for UI/UX, social media graphics, packaging design, and any creative challenge you face.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; color: var(--text-color); margin-bottom: 15px;">What Our Clients Say</h2>
+                <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">Trusted by businesses for branding and design</p>
+                <div style="margin-top: 18px;">
+                    <button id="openReviewModal" type="button" class="btn btn-primary" style="padding:12px 18px; border-radius:12px; background:#b48cff; border:none; color:white; cursor:pointer;">Add your review</button>
+                </div>
+            </div>
+
+            <div id="publicTestimonialsGrid" class="testimonial-grid">
+            </div>
+        </div>
+    </section>
+
+    <div id="reviewModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
+            <span class="close-btn" id="closeReviewModal" aria-label="Close">&times;</span>
+
+            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:18px;">
+                <h3 id="reviewModalTitle" style="margin:0; color:var(--text-color);">Leave Feedback</h3>
+                <div style="color:var(--text-muted);">Your feedback will appear on the website after admin approval.</div>
+            </div>
+
+            <form id="testimonialForm" action="backend/submit_testimonial.php" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <div style="grid-column: span 1;">
+                    <label style="font-weight:600; color:var(--text-color);">Your Name</label>
+                    <input type="text" id="t_name" name="name" required style="width:100%; padding:10px 12px; margin-top:6px; border:1px solid #e5e7eb; border-radius:10px;" />
+                </div>
+                <div style="grid-column: span 1;">
+                    <label style="font-weight:600; color:var(--text-color);">Company (optional)</label>
+                    <input type="text" id="t_company" name="company" style="width:100%; padding:10px 12px; margin-top:6px; border:1px solid #e5e7eb; border-radius:10px;" />
+                </div>
+
+                <div style="grid-column: span 1;">
+                    <label style="font-weight:600; color:var(--text-color);">Rating</label>
+                    <select id="t_rating" name="rating" style="width:100%; padding:10px 12px; margin-top:6px; border:1px solid #e5e7eb; border-radius:10px;">
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Okay</option>
+                        <option value="1">1 - Poor</option>
+                    </select>
+                </div>
+                <div style="grid-column: span 1;">
+                    <label style="font-weight:600; color:var(--text-color);">Title (optional)</label>
+                    <input type="text" id="t_title" name="title" style="width:100%; padding:10px 12px; margin-top:6px; border:1px solid #e5e7eb; border-radius:10px;" />
+                </div>
+
+                <div style="grid-column: 1 / -1;">
+                    <label style="font-weight:600; color:var(--text-color);">Message</label>
+                    <textarea id="t_message" name="message" required rows="3" style="width:100%; padding:10px 12px; margin-top:6px; border:1px solid #e5e7eb; border-radius:10px; resize:vertical;"></textarea>
+                </div>
+
+                <div style="grid-column: 1 / -1; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                    <button type="submit" class="btn btn-primary" style="padding:12px 18px; border-radius:12px; background:#b48cff; border:none; color:white; cursor:pointer;">Submit Feedback</button>
+                    <div id="testimonialStatus" class="form-alert" role="status" aria-live="polite" style="display:none;"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </main>
+
+    <footer style="background: var(--footer-bg); color: var(--text-color); padding: 40px 20px 20px;">
+        <div class="footer-content" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div class="footer-section">
+                <h3>AKRINO Scedio</h3>
+                <p>Transforming ideas into visual masterpieces</p>
+                <a class="footer-map" href="https://www.google.com/maps/place/AKRINO+Scedio/@19.9848314,73.7970466,17z/data=!3m1!4b1!4m6!3m5!1s0x3bddeb1531f5362f:0x29831990a2bb782b!8m2!3d19.9848314!4d73.7970466!16s%2Fg%2F11x1n7_df6?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Open AKRINO Scedio location on Google Maps">
+                    <iframe title="AKRINO Scedio map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=AKRINO%20Scedio&z=17&output=embed"></iframe>
+                    <span class="footer-map-overlay">View on Google Maps</span>
+                </a>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#home" style="color: var(--text-color); text-decoration: none;">Home</a></li>
+                    <li><a href="portfolio.php" style="color: var(--text-color); text-decoration: none;">Portfolio</a></li>
+                    <li><a href="#services" style="color: var(--text-color); text-decoration: none;">Services</a></li>
+                    <li><a href="about.php" style="color: var(--text-color); text-decoration: none;">About</a></li>
+                    <li><a href="get-quote.php" style="color: var(--text-color); text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-section">
+                <h4>Contact Us</h4>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://www.google.com/maps/place/AKRINO+Scedio/@19.9848314,73.7970466,17z/data=!3m1!4b1!4m6!3m5!1s0x3bddeb1531f5362f:0x29831990a2bb782b!8m2!3d19.9848314!4d73.7970466!16s%2Fg%2F11x1n7_df6?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color: var(--text-color); text-decoration: none;">Address: Flat No. 02, Orchid Apartment, Pakhal Rd, Bajrang Wadi, Gulshan Colony, Nashik, Maharashtra 422011</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a id="homeContactPhone" href="https://wa.me/919970963077" target="_blank" rel="noopener noreferrer" style="color: var(--text-color); text-decoration: none;">+91 99709 63077</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a id="homeContactEmail" href="mailto:akrinoscedio@gmail.com" style="color: var(--text-color); text-decoration: none;">akrinoscedio@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://in.linkedin.com/in/afnan-khan-web-developer" target="_blank" rel="noopener noreferrer" style="color: var(--text-color); text-decoration: none;">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/akrinoscedio?igshid=MW50bTVucTNodDh2Mw==" target="_blank" rel="noopener noreferrer" style="color: var(--text-color); text-decoration: none;">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>&copy; 2024 AKRINO Scedio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/shared.js?v=20260224"></script>
+    <script src="js/main.js?v=20260226"></script>
+
+</body>
+</html>

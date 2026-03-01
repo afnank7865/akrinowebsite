@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - AKRINO Studio</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-dashboard">
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>AKRINO Admin</h2>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li class="active" data-section="dashboard">
+                        <a href="#"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li data-section="testimonials">
+                        <a href="admin-testimonials.php"><i class="fas fa-star"></i> <span>Testimonials</span></a>
+                    </li>
+                    <li data-section="inquiries">
+                        <a href="admin-inquiries.php"><i class="fas fa-inbox"></i> <span>Inquiries</span></a>
+                    </li>
+                    <li data-section="services">
+                        <a href="admin-services.php"><i class="fas fa-concierge-bell"></i> <span>Services</span></a>
+                    </li>
+                    <li data-section="portfolio">
+                        <a href="admin-dashboard.php"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a>
+                    </li>
+                    <li data-section="about">
+                        <a href="admin-about.php"><i class="fas fa-circle-info"></i> <span>About Page</span></a>
+                    </li>
+                    <li id="logoutBtn">
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="toggle-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-chip" id="calendarChip" role="button" tabindex="0" aria-label="Select date">
+                        <i class="fas fa-calendar"></i>
+                        <span>Today</span>
+                    </div>
+                    <div id="calendarPopup" style="display:none; position:absolute; right:110px; top:64px; background:#fff; border:1px solid rgba(148,163,184,0.35); border-radius:12px; padding:10px; box-shadow:0 12px 30px rgba(15,23,42,0.12); z-index:9999;">
+                        <div style="font-size:0.85rem; color:#64748b; margin-bottom:6px;">Select date</div>
+                        <input id="activityDatePicker" type="date" style="padding:10px 12px; border:1px solid rgba(148,163,184,0.45); border-radius:10px; outline:none;" />
+                    </div>
+                    <div class="admin-profile">
+                        <span>Admin</span>
+                        <div class="profile-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content" id="adminSectionContent">
+                <!-- Add Portfolio Project Form -->
+                <div class="admin-form-wrapper" id="addProjectForm" style="display:none;">
+                    <h2>Add Portfolio Project</h2>
+                    <form id="addProjectFormElement"
+      action="/akrino/backend/add_project.php"
+      method="POST"
+      enctype="multipart/form-data">
+<label>Project Title</label>
+<input type="text" name="project_title" required>
+
+<label>Project Category</label>
+<select name="project_status">
+    <option value="branding">Branding</option>
+    <option value="web">Web</option>
+    <option value="uiux">UI/UX</option>
+</select>
+
+<label>Upload Image</label>
+<input type="file" name="uploaded_file" required>
+
+<button type="submit">Save Item</button>
+
+</form>                                     
+                </div>
+                <!-- Overview Cards -->
+                <div class="overview-cards">
+                    <div class="card">
+                        <div class="card-icon bg-primary">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Total Visitors</h3>
+                            <span id="totalVisitors">1,234</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon bg-success">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Inquiries</h3>
+                            <span id="newMessages">12</span>
+                            <div style="margin-top:6px;">
+                                <a href="admin-inquiries.php" style="color:inherit; text-decoration:underline; font-size:0.9rem;">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon bg-warning">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Total Testimonials</h3>
+                            <span id="totalTestimonials">0</span>
+                            <div style="margin-top:6px;">
+                                <a href="admin-testimonials.php" style="color:inherit; text-decoration:underline; font-size:0.9rem;">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon bg-warning">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Pending Testimonials</h3>
+                            <span id="pendingTestimonials">0</span>
+                            <div style="margin-top:6px;">
+                                <a href="admin-testimonials.php" style="color:inherit; text-decoration:underline; font-size:0.9rem;">Review</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <a href="admin-activity.php" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list" id="recentActivity">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const btn = document.querySelector('[data-action="add-portfolio"]');
+            if (btn) {
+                btn.addEventListener("click", () => {
+                    document.getElementById("addProjectForm").style.display = "block";
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const chip = document.getElementById('calendarChip');
+            const picker = document.getElementById('activityDatePicker');
+            const popup = document.getElementById('calendarPopup');
+            if (!chip || !picker) return;
+
+            chip.style.cursor = 'pointer';
+
+            function togglePopup(show) {
+                if (!popup) return;
+                popup.style.display = show ? 'block' : 'none';
+                if (show) {
+                    try { picker.focus(); } catch {}
+                }
+            }
+
+            chip.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (popup) {
+                    togglePopup(popup.style.display !== 'block');
+                }
+            });
+            chip.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (popup) togglePopup(true);
+                }
+            });
+
+            document.addEventListener('click', () => togglePopup(false));
+            if (popup) {
+                popup.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            picker.addEventListener('change', () => {
+                const d = picker.value;
+                if (!d) return;
+                window.location.href = 'admin-activity.php?date=' + encodeURIComponent(d);
+            });
+        });
+        
+        function closeProjectForm() {
+            document.getElementById("addProjectForm").style.display = "none";
+        }
+        </script>        
+        
+</body>
+</html>

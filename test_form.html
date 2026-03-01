@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact - AKRINO Scedio</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body{
+    background:#f9fbfe;
+}
+
+/* Contact Box */
+.contact-box{
+    max-width:600px;
+    margin:120px auto;
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.contact-box h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.contact-box input,
+.contact-box textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    font-size:15px;
+}
+
+.contact-box textarea{
+    height:130px;
+    resize:none;
+}
+
+.contact-box button{
+    width:100%;
+    background:#b48cff;
+    color:white;
+    border:none;
+    padding:13px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.contact-box button:hover{
+    background:#9f6fff;
+}
+</style>
+
+</head>
+<body>
+
+<div class="contact-box">
+
+<h2>Contact AKRINO Scedio</h2>
+
+<form id="whatsappForm">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="email" id="email" placeholder="Your Email" required>
+
+<textarea id="message" placeholder="Tell us about your project..." required></textarea>
+
+<button type="submit">
+<i class="fab fa-whatsapp"></i> Send on WhatsApp
+</button>
+
+</form>
+
+</div>
+
+<!-- WHATSAPP SCRIPT -->
+<script>
+document.getElementById("whatsappForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    let phone = "919970963077";
+
+    let text =
+    "Hello AKRINO Scedio,%0A%0A" +
+    "Name: " + name + "%0A" +
+    "Email: " + email + "%0A%0A" +
+    "Project Details:%0A" + message;
+
+    let url = "https://wa.me/" + phone + "?text=" + text;
+
+    window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
